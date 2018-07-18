@@ -12,7 +12,7 @@ func init() {
 func main() {
 	log.Info("initializing...")
 
-	block, err := store.CreateBlock("./database/block")
+	block, err := store.NewBlock("./database/block")
 	if err != nil {
 		log.Fatal(err)
 	}

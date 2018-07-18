@@ -4,10 +4,18 @@ import (
 	"github.com/syndtr/goleveldb/leveldb"
 )
 
-// Create a database for blocks
-func CreateBlock(path string) (*leveldb.DB, error) {
-	var block *leveldb.DB
-	block, err := leveldb.OpenFile(path, nil)
+type DB struct {
+	block *leveldb.DB
+}
 
-	return block, err
+// Create a database for blocks
+func NewBlock(path string) (*DB, error) {
+	b, err := leveldb.OpenFile(path, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return &DB{
+		b,
+	}, nil
 }
