@@ -12,10 +12,10 @@ func init() {
 func main() {
 	log.Info("initializing...")
 
-	block, err := store.NewBlock("./database/block")
+	blockStore, err := store.NewBlockStore("./database")
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	log.Info(block)
+	log.Info(blockStore)
 }
