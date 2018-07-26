@@ -1,18 +1,18 @@
 package store
 
 import (
+	"github.com/outsideris/learning-blockchain/bitcoin/pkg/store/leveldb"
 	log "github.com/sirupsen/logrus"
-	"github.com/syndtr/goleveldb/leveldb"
 )
 
 type DB struct {
-	block *leveldb.DB
+	block *leveldb.DBStore
 }
 
 // Create a database for blocks
 func NewBlockStore(path string) (*DB, error) {
 	log.Infof("Creating BlockStore from '%s'", path+"/blocks")
-	store, err := newLevelDbStore(path + "/blocks")
+	store, err := leveldb.NewDBStore(path + "/blocks")
 	if err != nil {
 		return nil, err
 	}
